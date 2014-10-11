@@ -9,6 +9,18 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+First, request device token to APNS.
+
+  [[M2DPushNotificationManager sharedInstanceWithDelegate:self] registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound) sendToProviderBlocks:^(NSString *token) {
+    //send device token to your server.
+  }];
+
+Second, decode device token
+
+	[[M2DPushNotificationManager sharedInstance] processDeviceToken:deviceToken];
+
+All done.
+
 ## Requirements
 
 ## Installation
@@ -25,4 +37,3 @@ Akira Matsuda, akira.m.itachi@gmail.com
 ## License
 
 M2DPushNotificationManager is available under the MIT license. See the LICENSE file for more info.
-
