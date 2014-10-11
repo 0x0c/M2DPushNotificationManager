@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Akira Matsuda" => "akira.m.itachi@gmail.com" }
   s.source           = { :git => "https://github.com/0x0c/M2DPushNotificationManager.git", :tag => s.version.to_s }
+  s.homepage         = "https://github.com/0x0c/M2DPushNotificationManager"
 
   s.platform     = :ios, '6.0'
   s.requires_arc = true
