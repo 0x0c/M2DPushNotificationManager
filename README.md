@@ -20,6 +20,11 @@ Second, decode device token
 	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 		[[M2DPushNotificationManager sharedInstance] processDeviceToken:deviceToken];
 	}
+	//If you are using iOS8, please implenent this method.
+	- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+	{
+    	[application registerForRemoteNotifications];
+	}
 
 All done.
 
