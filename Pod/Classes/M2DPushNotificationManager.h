@@ -28,5 +28,6 @@
 - (void)registerDeviceToken:(void (^)(NSString *token))sendToProviderBlock;
 - (void)registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock;
 - (void)processDeviceToken:(NSData *)deviceToken;
+- (BOOL)pushNotificationEnabled;
 
 @end

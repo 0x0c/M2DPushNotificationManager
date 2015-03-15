@@ -83,4 +83,17 @@ static M2DPushNotificationManager *sharedInstance_;
 	}
 }
 
+- (BOOL)pushNotificationEnabled
+{
+	BOOL result = NO;
+	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
+		result = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+	}
+	else {
+		result = [[UIApplication sharedApplication] enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone;
+	}
+
+	return result;
+}
+
 @end
