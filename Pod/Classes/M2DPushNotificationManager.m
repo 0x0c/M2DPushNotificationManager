@@ -63,7 +63,7 @@ static M2DPushNotificationManager *sharedInstance_;
 - (void)registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock
 {
 	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
-    		UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+		UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationType)types categories:nil];
     		[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     		[[UIApplication sharedApplication] registerForRemoteNotifications];
 	}
