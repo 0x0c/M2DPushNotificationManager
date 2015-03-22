@@ -57,7 +57,7 @@ static M2DPushNotificationManager *sharedInstance_;
 - (void)registerDeviceToken:(void (^)(NSString *token))sendToProviderBlock
 {
 	[[UIApplication sharedApplication] registerForRemoteNotifications];
-	sendToProviderBlock_ = [sendToProviderBlock copy];
+	self.sendToProviderBlock = sendToProviderBlock;
 }
 
 - (void)registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock
@@ -71,12 +71,12 @@ static M2DPushNotificationManager *sharedInstance_;
 		[[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
 	}
 	
-	sendToProviderBlock_ = [sendToProviderBlock copy];
+	self.sendToProviderBlock = sendToProviderBlock;
 }
 
 - (void)processDeviceToken:(NSData *)deviceToken
 {
-	sendToProviderBlock_([deviceToken m2d_hexadecimalDescription]);
+	self.sendToProviderBlock([deviceToken m2d_hexadecimalDescription]);
 	
 	if ([self.delegate respondsToSelector:@selector(didFinishRegisteringForRemoteNotificationsWithDeviceToken)]) {
 		[self.delegate didFinishRegisteringForRemoteNotificationsWithDeviceToken];

@@ -17,11 +17,9 @@
 @end
 
 @interface M2DPushNotificationManager : NSObject
-{
-	void (^sendToProviderBlock_)(NSString *token);
-}
 
 @property (assign, nonatomic)id<M2DPushNotificationManagerDelegate> delegate;
+@property (nonatomic, copy) void (^sendToProviderBlock)(NSString *token);
 
 + (id)sharedInstance;
 + (id)sharedInstanceWithDelegate:(id)delegate;
