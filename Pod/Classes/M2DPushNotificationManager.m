@@ -60,19 +60,20 @@ static M2DPushNotificationManager *sharedInstance_;
 	self.sendToProviderBlock = sendToProviderBlock;
 }
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+- (void)registerDeviceTokenWithRemoteNotificationTypes:(UIUserNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock
+{
+	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+	[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+	[[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+#else
 - (void)registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock
 {
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
-		UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationType)types categories:nil];
-    		[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    		[[UIApplication sharedApplication] registerForRemoteNotifications];
-	}
-	else {
-		[[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
-	}
-	
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
 	self.sendToProviderBlock = sendToProviderBlock;
 }
+#endif
 
 - (void)processDeviceToken:(NSData *)deviceToken
 {

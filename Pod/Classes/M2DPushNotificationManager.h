@@ -24,7 +24,11 @@
 + (id)sharedInstance;
 + (id)sharedInstanceWithDelegate:(id)delegate;
 - (void)registerDeviceToken:(void (^)(NSString *token))sendToProviderBlock;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+- (void)registerDeviceTokenWithRemoteNotificationTypes:(UIUserNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock;
+#else
 - (void)registerDeviceTokenWithRemoteNotificationTypes:(UIRemoteNotificationType)types sendToProviderBlocks:(void (^)(NSString *token))sendToProviderBlock;
+#endif
 - (void)processDeviceToken:(NSData *)deviceToken;
 - (BOOL)pushNotificationEnabled;
 
