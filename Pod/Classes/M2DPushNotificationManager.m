@@ -87,13 +87,17 @@ static M2DPushNotificationManager *sharedInstance_;
 - (BOOL)pushNotificationEnabled
 {
 	BOOL result = NO;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+	result = [[UIApplication sharedApplication] enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone;
+#else
 	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
 		result = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
 	}
 	else {
 		result = [[UIApplication sharedApplication] enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone;
 	}
-
+#endif
+	
 	return result;
 }
 
