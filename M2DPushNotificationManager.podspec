@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "M2DPushNotificationManager"
-  s.version          = "0.1.5"
+  s.version          = "0.1.6"
   s.summary          = "Get device token and send to your server."
   s.description      = <<-DESC
 						Get device token from APNS and send to your server.

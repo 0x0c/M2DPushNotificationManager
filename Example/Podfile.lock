@@ -1,0 +1,20 @@
+PODS:
+  - Expecta (0.3.1)
+  - M2DPushNotificationManager (0.1.0)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - Expecta
+  - M2DPushNotificationManager (from `../`)
+  - Specta (~> 0.2.1)
+
+EXTERNAL SOURCES:
+  M2DPushNotificationManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  M2DPushNotificationManager: d2aa9c14c3cfadb9186c75a75489561e78d84a39
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+
+COCOAPODS: 0.34.2
